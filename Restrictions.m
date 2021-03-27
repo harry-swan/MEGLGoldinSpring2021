@@ -1,17 +1,21 @@
-function B = Restrictions(w,n)
-    w = convertStringsToChars(w);
+function B = Restrictions(W,n)
+    W = convertStringsToChars(W);
     Y = PetersonGenerator(n)';
     Alphas = sym('a',[1 (n-1)]); %These are the symbols for representing restrictions
     t = sym('t'); %Convert the alphas into these t's
     y = find(~cellfun('isempty',Y)); %Logical cells with reduced words
     s = size(y,1); %Number of elements in Peterson (Should be 2^(n-1))
-    RWF = ReducedWordForms(w);
-    w = strsplit(w(2:end),'s');
+    w = strsplit(W(2:end),'s');
     w = cellfun(@str2num, w); %Word to restrict to in numerical form
     if (w(1) == 0)
         w = [];
     end
     l = length(w);
+    if (W ~= Y(y(s)))
+        RWF = ReducedWordForms(W);
+    else
+        RWF = w;
+    end
     Word = strings(s,1);
     Restriction = sym('r',[1 s],'integer').';
     tForm = sym('t',[1 s],'integer').';
