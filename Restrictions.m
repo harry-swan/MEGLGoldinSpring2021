@@ -4,7 +4,7 @@ function B = Restrictions(W,n)
     Alphas = sym('a',[1 (n-1)]); %These are the symbols for representing restrictions
     t = sym('t'); %Convert the alphas into these t's
     y = find(~cellfun('isempty',Y)); %Logical cells with reduced words
-    s = size(y,1); %Number of elements in Peterson (Should be 2^(n-1))
+    s = length(y); %Number of elements in Peterson (Should be 2^(n-1))
     w = strsplit(W(2:end),'s');
     w = cellfun(@str2num, w); %Word to restrict to in numerical form
     if (w(1) == 0)

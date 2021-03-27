@@ -1,7 +1,7 @@
 function PR = PetersonRestrictions(n)
     Y = PetersonGenerator(n)';
     y = find(~cellfun('isempty',Y)); %Logical cells with reduced words
-    s = size(y,1); %Number of elements in Peterson (Should be 2^(n-1))
+    s = length(y); %Number of elements in Peterson (Should be 2^(n-1))
     PR = strings(0,3);
     R = strings(s + 1,3,s);
     for i = 1:s
