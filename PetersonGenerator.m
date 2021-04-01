@@ -3,7 +3,7 @@ function Y = PetersonGenerator(n)
     Y = strings(n*(n-1)/2+1,n^3); %Elements in the Peterson!
     Y(1,1) = 's0'; %Annoyingly, MatLab starts indices at 1, not 0
     i = ones(n*(n-1)/2); %Peterson Indices
-    s = 1:1:n-1;
+    s = 1:n-1;
     while(usr < n)
         w = nchoosek(s,usr); %Convert these combinations to Peterson form
         m = size(w,1); %Number of combinations
