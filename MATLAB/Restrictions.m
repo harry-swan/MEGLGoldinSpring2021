@@ -1,4 +1,6 @@
 function B = Restrictions(W,n)
+    %Restricts a reduced word W to Y(n)
+    %Returns an array with alpha restrictions and t restrictions
     W = convertStringsToChars(W);
     Y = PetersonGenerator(n)';
     Alphas = sym('a',[1 (n-1)]); %These are the symbols for representing restrictions

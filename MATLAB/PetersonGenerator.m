@@ -1,4 +1,11 @@
 function Y = PetersonGenerator(n)
+    %cache prevents redundant calculation
+    cache = strcat('Y',string(n));
+    try
+        Y = evalin('base', cache);
+        return;
+    catch
+    end
     usr = 1; %Current number of unique simple reflections per element
     Y = strings(n*(n-1)/2+1,n^3); %Elements in the Peterson!
     Y(1,1) = 's0'; %Annoyingly, MatLab starts indices at 1, not 0
@@ -43,4 +50,5 @@ function Y = PetersonGenerator(n)
     end
     keep = any(~cellfun('isempty',Y), 1);
     Y = Y(:,keep);
+    assignin('base',cache,Y);
 end

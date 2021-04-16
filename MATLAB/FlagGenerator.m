@@ -1,4 +1,11 @@
 function X = FlagGenerator(n)
+    %cache prevents redundant calculation
+    cache = strcat('X',string(n));
+    try
+        X = evalin('base', cache);
+        return;
+    catch
+    end
     if(n == 1)
         X = "s0";
         return;
@@ -28,9 +35,11 @@ function X = FlagGenerator(n)
         X(len,i(len)) = x;
         i(len) = i(len) + 1;
     end
+    %Sort X(n) rows into alphabetical order
     keep = any(~cellfun('isempty',X), 1);
     X = X(:,keep);
     X(X == "") = string(missing);
     X = sort(X,2);
     X(ismissing(X)) = "";
+    assignin('base',cache,X);
 end

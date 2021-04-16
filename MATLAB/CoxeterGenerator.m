@@ -1,19 +1,28 @@
 function C = CoxeterGenerator(n)
-    n = n - 1; %One less s than value of n
-    C = strings(n + 1,n^2); %Coxeter Elements
-    C(1,1) = 's0'; %Identity Element
-    i = ones(n); %Coxeter Element Indices
-    s = 1:n-1;
-    for l = 1:n
-        for j = 1:(n+1-l)
-            w = '';
-            for k = j:j+l-1
-                w = strcat(w,strcat('s',string(k)));
-            end
-            C(l + 1,i(l)) = w;
-            i(l) = i(l) + 1;
-        end
+    %cache prevents redundant calculation
+    cache = strcat('C',string(n));
+    try
+        C = evalin('base', cache);
+        return;
+    catch
     end
-    keep = any(~cellfun('isempty',C), 1);
-    C = C(:,keep);
+    %Take Y(n) and get rid of rightmost repeats
+    %C(n) elements will have same position as corresponding Y(n) elements
+    C = PetersonGenerator(n)';
+    c = find(~cellfun('isempty',C));
+    s = length(c);
+    for i = 1:s
+        r = C(c(i));
+        r = convertStringsToChars(r);
+        r = strsplit(r(2:end),'s');
+        r = cellfun(@str2num, r);
+        r = unique(r);
+        x = '';
+        for j = 1:length(r)
+            x = strcat(x,strcat('s',string(r(j))));
+        end
+        C(c(i)) = x;
+    end
+    C = C';
+    assignin('base',cache,C);
 end
