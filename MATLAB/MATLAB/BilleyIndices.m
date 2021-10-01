@@ -1,4 +1,8 @@
 function I = BilleyIndices(w,r,l,n,I,s,k,b)
+    %Example input:
+        %(BilleyIndices([1,2,1],[1,2,3,1,2,1],
+        %3,6,zeros(4,3),1,1,zeros(2,1))
+    %This could be improved by allowing only w and r as base input
     %w is being restricted to r
     %l=length(w),n=length(r) to avoid redundant recalculation of length
     %All the "sub-indices" end up in I

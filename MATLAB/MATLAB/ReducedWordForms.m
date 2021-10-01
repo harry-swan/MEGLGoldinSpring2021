@@ -1,4 +1,6 @@
 function R = ReducedWordForms(w)
+    %Find all reduced word forms of a reduced word w
+    %Terribly, terribly, terribly slow, I need to improve the use of this
     if (isempty(w))
         R = [];
         return;

@@ -1,4 +1,5 @@
 function PR = PetersonRestrictions(n)
+    %Restricts every element of C(n) to Y(n)
     C = CoxeterGenerator(n)';
     c = find(~cellfun('isempty',C)); %Logical cells with reduced words
     s = length(c); %Number of elements in Coxeter

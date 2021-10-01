@@ -1,4 +1,5 @@
 function Y = PetersonGenerator(n)
+    %cache prevents redundant calculation
     cache = strcat('Y',string(n));
     try
         Y = evalin('base', cache);

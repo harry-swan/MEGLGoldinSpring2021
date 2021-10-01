@@ -1,10 +1,13 @@
 function C = CoxeterGenerator(n)
+    %cache prevents redundant calculation
     cache = strcat('C',string(n));
     try
         C = evalin('base', cache);
         return;
     catch
     end
+    %Take Y(n) and get rid of rightmost repeats
+    %C(n) elements will have same position as corresponding Y(n) elements
     C = PetersonGenerator(n)';
     c = find(~cellfun('isempty',C));
     s = length(c);

@@ -1,4 +1,5 @@
 function FR = FlagRestrictions(n)
+    %Restricts every element of X(n) to Y(n)
     X = FlagGenerator(n)';
     x = find(~cellfun('isempty',X)); %Logical cells with reduced words
     s = length(x); %Number of elements in Flag (n!)

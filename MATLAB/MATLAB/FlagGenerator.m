@@ -1,4 +1,5 @@
 function X = FlagGenerator(n)
+    %cache prevents redundant calculation
     cache = strcat('X',string(n));
     try
         X = evalin('base', cache);
@@ -34,6 +35,7 @@ function X = FlagGenerator(n)
         X(len,i(len)) = x;
         i(len) = i(len) + 1;
     end
+    %Sort X(n) rows into alphabetical order
     keep = any(~cellfun('isempty',X), 1);
     X = X(:,keep);
     X(X == "") = string(missing);
