@@ -1,5 +1,6 @@
 # MEGLGoldinSpring2021
 Note that s0 represents the identity element (i.e. no reflection).
+The .mat files in FR and PR can be viewed in MatLab.
 
 Restrictions will give the results of restricting a provided (reduced) word to every element of the Peterson variety for a given n.
 If the provided word is not reduced, the function will find a reduced word form of the word.
