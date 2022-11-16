@@ -1,6 +1,6 @@
 function L = Pullback(W,n)
     %Example Input: Pullback('s1s2s1',4)
-    %Computes i*(W) where W is a reduced word in X(n)
+    %Computes i*\circ\pi(W) where W is a reduced word in X(n)
     C = CoxeterGenerator(n);
     W = convertStringsToChars(W);
     if(ismember(W,C))

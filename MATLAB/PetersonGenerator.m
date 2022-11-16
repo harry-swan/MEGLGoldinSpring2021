@@ -1,4 +1,6 @@
 function Y = PetersonGenerator(n)
+    %Generates reduced decompositions of permutations representing fixed
+        %points of the Peterson variety under an S-action
     %cache prevents redundant calculation
     cache = strcat('Y',string(n));
     try
@@ -7,9 +9,9 @@ function Y = PetersonGenerator(n)
     catch
     end
     usr = 1; %Current number of unique simple reflections per element
-    Y = strings(n*(n-1)/2+1,n^3); %Elements in the Peterson!
-    Y(1,1) = 's0'; %Annoyingly, MatLab starts indices at 1, not 0
-    i = ones(n*(n-1)/2); %Peterson Indices
+    Y = strings(n*(n-1)/2+1,n^3); %Fixed points of Peterson variety
+    Y(1,1) = 's0'; %MatLab starts indices at 1, not 0
+    i = ones(n*(n-1)/2); %Keeps track of where to put new reduced words
     s = 1:n-1;
     while(usr < n)
         w = nchoosek(s,usr); %Convert these combinations to Peterson form

@@ -1,4 +1,5 @@
 function C = CoxeterGenerator(n)
+    %Generates all coxeter permutations' reduced words for S_n
     %cache prevents redundant calculation
     cache = strcat('C',string(n));
     try

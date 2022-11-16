@@ -1,4 +1,6 @@
 function X = FlagGenerator(n)
+    %Generates reduced decompositions of permutations representing fixed
+        %points of the Flag variety under a T-action
     %cache prevents redundant calculation
     cache = strcat('X',string(n));
     try

@@ -1,5 +1,6 @@
 function B = Restrictions(W,n,RWF)
-    %Restricts a reduced word W to Y(n)
+    %Sample Input: Restrictions('s1s2',4)
+    %Restricts a reduced word W to all fixed points of Y(n)
     %Returns an array with alpha restrictions and t restrictions
     W = convertStringsToChars(W);
     Y = PetersonGenerator(n)';
@@ -35,7 +36,7 @@ function B = Restrictions(W,n,RWF)
             Restriction(i) = 1;
             tForm(i) = 1;
         elseif(rl >= l)
-            %Sara Billey's Formula
+            %AJS-Billey Formula
             I = zeros(rl^3,l);
             for j = 1:o
                 I = BilleyIndices(RWF(j,:),r,l,rl,I,1,1,zeros(1,l-1));

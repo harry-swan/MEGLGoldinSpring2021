@@ -2,10 +2,16 @@ function I = BilleyIndices(w,r,l,n,I,s,k,b)
     %Example input:
         %(BilleyIndices([1,2,1],[1,2,3,1,2,1],
         %3,6,zeros(4,3),1,1,zeros(2,1))
-    %This could be improved by allowing only w and r as base input
+    %Example output:
+        %ans =
+
+            %1     2     4
+            %1     2     6
+            %1     5     6
+            %4     5     6
     %w is being restricted to r
     %l=length(w),n=length(r) to avoid redundant recalculation of length
-    %All the "sub-indices" end up in I
+    %All the "sub-indices" describing ways to restric w to r end up in I
     %s is the index to start from
     %k is the index of the found "sub-indices"
     %b contains the current found indices

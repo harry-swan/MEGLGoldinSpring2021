@@ -1,6 +1,17 @@
 function R = ReducedWordForms(w)
+    %Sample Input: ReducedWordForms('s1s2s3s2s1')
+    %Sample Output: ans =
+        %
+        %1     2     3     2     1
+        %1     3     2     3     1
+        %3     1     2     3     1
+        %1     3     2     1     3
+        %3     1     2     1     3
+        %3     2     1     2     3
     %Find all reduced word forms of a reduced word w
     %Terribly, terribly, terribly slow, I need to improve the use of this
+    %^Swan's thoughts on this from 2020
+    %Most of the time complexity comes from spanning this graph
     if (isempty(w))
         R = [];
         return;
